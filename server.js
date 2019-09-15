@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 //Setup the view engine - expresss-handelbars
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-app.get('/', (req, res) => {
+app.get('/' || '/home', (req, res) => {
   res.render('home', {
     title: 'Home'
   });
