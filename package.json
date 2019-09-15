@@ -14,13 +14,15 @@
     "Dating",
     "niche",
     "culture",
-    "multiculture",
-    
+    "multiculture"
   ],
   "author": "EmJaDa Studios",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/danmalmx/3ccupid/issues"
   },
-  "homepage": "https://github.com/danmalmx/3ccupid#readme"
+  "homepage": "https://github.com/danmalmx/3ccupid#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
