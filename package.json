@@ -1,0 +1,26 @@
+{
+  "name": "3ccupid",
+  "version": "1.0.0",
+  "description": "Dating for ATCC's",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danmalmx/3ccupid.git"
+  },
+  "keywords": [
+    "Dating",
+    "niche",
+    "culture",
+    "multiculture",
+    
+  ],
+  "author": "EmJaDa Studios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danmalmx/3ccupid/issues"
+  },
+  "homepage": "https://github.com/danmalmx/3ccupid#readme"
+}
