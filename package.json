@@ -24,6 +24,7 @@
   "homepage": "https://github.com/danmalmx/3ccupid#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^3.1.0"
+    "express-handlebars": "^3.1.0",
+    "nodemod": "^1.5.19"
   }
 }
