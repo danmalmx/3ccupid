@@ -1,22 +1,31 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-
 const mongoose = require('mongoose');
-//Load modul
+const passport = require('passport');
 const Message = require('./Models/message');
-
+const User = require('./Models/users');
 const app = express();
-
-//Load key file
 const keys = require('./config/keys')
-
-//Environment variable for port
 const port = process.env.PORT || 3000;
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 //Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Configurate for Auth
+app.use(cookieParser());
+app.use(session({
+  secret: 'mysecret',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+//Load fb strategy
+require('./passport/facebook');
 
 //Connect to MongoDb
 mongoose.connect(keys.MongoDb,
@@ -52,6 +61,25 @@ app.get('/contact', (req, res) => {
   });
 });
 
+app.get('/auth/facebook', passport.authenticate('facebook', {
+  scope: ['email']
+}));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+  successRedirect: '/profile',
+  failureRedirect: '/'
+}));
+
+app.get('/profile', (req, res) => {
+  User.findById({ _id: req.user._id }).then((user) => {
+    if (user) {
+      res.render('profile', {
+        title: 'Profile',
+        user: user
+      });
+    }
+  });
+});
+
 app.post('/contactUs', (req, res) => {
   console.log(req.body);
   const newMessage = {
@@ -60,6 +88,7 @@ app.post('/contactUs', (req, res) => {
     message: req.body.message,
     date: new Date()
   }
+
   new Message(newMessage).save((err, message) => {
     if (err) {
       throw err;
@@ -73,7 +102,7 @@ app.post('/contactUs', (req, res) => {
         } else {
           res.render('nomessage', {
             title: 'Not found'
-          }) 
+          })
         }
       })
     }
