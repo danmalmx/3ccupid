@@ -43,7 +43,7 @@ mongoose.connect(keys.MongoDb,
 //Setup the view engine - expresss-handelbars
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-app.get('/', (req, res) => {
+app.get('', (req, res) => {
   res.render('home', {
     title: 'Home'
   });
@@ -66,7 +66,7 @@ app.get('/auth/facebook', passport.authenticate('facebook', {
 }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
   successRedirect: '/profile',
-  failureRedirect: '/'
+  failureRedirect: ''
 }));
 
 app.get('/profile', (req, res) => {
