@@ -7,7 +7,7 @@ const Message = require('./Models/message');
 const User = require('./Models/users');
 const app = express();
 const keys = require('./config/keys')
-const port = 3000 || process.env.PORT;
+// const port = 3000 || process.env.PORT;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
@@ -109,6 +109,6 @@ app.post('/contactUs', (req, res) => {
   });
 })
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+app.listen(3000 || process.env.PORT, () => {
+  console.log(`Server is running`);
 });
