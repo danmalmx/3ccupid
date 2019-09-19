@@ -7,7 +7,7 @@ const Message = require('./Models/message');
 const User = require('./Models/users');
 const app = express();
 const keys = require('./config/keys')
-const port = process.env.PORT || 3000;
+const port = 3000 || process.env.PORT;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
