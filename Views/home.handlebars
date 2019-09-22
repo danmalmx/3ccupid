@@ -1,5 +1,40 @@
-<h1>Welcome all ATCC's</h1>
+<h1>Welcome all ATCK's</h1>
+{{#if user}}
+<p>You are logged in</p>
+{{else}}
+<div class="row">
+  <div class="col-sm-4">
+    <h1 class="center">
+      <a href="/auth/facebook/">
+        <button type="button" class="btn btn-primary btn-lg">Login with Facebook</button>
+      </a>
+    </h1>
+    <h1 class="center">
+      <a href="/auth/google/">
+        <button type="button" class="btn btn-danger btn-lg">Login with Google</button>
+      </a>
+    </h1>
+    <p class="center">or</p>
 
-<a href="/auth/facebook/">
-  <button type="button" class="btn btn-primary btn-lg">Login with Facebook</button>
-</a>
+    <form action="/login" method="POST">
+      {{#each success}}
+      <p class="green">{{text}}</p>
+      {{/each}}
+      {{#each errors}}
+      <p class="red">{{text}}</p>
+      {{/each}}
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control">
+      </div>
+      <button class="btn btn-success" type="submit">Login</button>
+    </form>
+    <p class="mt-2">Don't have an account yet? <a href="/newAccount">sign up</a></p>
+
+  </div>
+</div>
+{{/if}}

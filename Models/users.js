@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  google: {
+    type: String
+  },
   facebook: {
     type: String
   },
@@ -15,7 +18,8 @@ const userSchema = new Schema({
     type: String
   },
   image: {
-    type: String
+    type: String,
+    default: '/img/userDefaultIMG.jpg'
   },
   email: {
     type: String
@@ -33,6 +37,9 @@ const userSchema = new Schema({
   wallet: {
     type: Number,
     default: 0
+  },
+  password: {
+    type: String
   }
 });
 
