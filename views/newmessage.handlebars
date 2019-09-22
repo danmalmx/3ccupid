@@ -1,0 +1,11 @@
+<h1 class="mb-2">Than's for contacting OddFish. We'll be is touch soon. Safe swimming until then</h1>
+{{#each messages}}
+<p>{{fullname}}</p>
+<p>{{email}}</p>
+<p>{{message}}</p>
+<small>{{date}}</small>
+<hr>
+{{else}}
+<p>No messages...</p>
+{{/each}}
+<a href="/contact"><button class="btn btn-success">Back to contact</button></a>
